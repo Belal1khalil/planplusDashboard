@@ -9,7 +9,7 @@ export default function ReportedVideos() {
 
   const [currentPage, setCurrentPage] = useState(1);
    const [del, setDelete] = useState(false);
-  const cardsPerPage = 4;
+  const cardsPerPage = 12;
 
   function handelDelete(){
 
@@ -127,7 +127,7 @@ export default function ReportedVideos() {
     <>
      { !ReportedVideos  ? <h2>Loading ......</h2> : <section>
         { ReportedVideos.length === 0 ? <div 
-          className="flex flex-col items-center justify-center  py-16 px-4 text-center"
+          className="flex flex-col items-center justify-center  py-20 px-4 text-center"
           style={{
             background:
               'linear-gradient(165.22deg, #1F2B43 40.11%, #1B3E3C 60.03%, #286447 79.96%, #329C4A 119.8%)',
@@ -159,8 +159,13 @@ export default function ReportedVideos() {
          <p className="text-white max-w-md">
             The moderation queue is currently empty. No videos have been reported by users.
         </p>
-          </div> :
+          </div> :     
          <div className="w-full p-4">
+             <div className="flex justify-center">
+        <h1 className="text-2xl text-center mt-5 mb-5 px-8 text-gray-100 py-2 rounded-lg bg-mainColor inline">
+          All Reported Videos
+        </h1>
+      </div>
          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
            {ReportedVideos.map((video, index) => (
           
@@ -192,7 +197,7 @@ export default function ReportedVideos() {
                {/* Video Thumbnail */}
                <img
                  className="w-full h-48 object-cover"
-                 src={video.publisherProfilePic}
+                 src={`https://plmetadata9872.b-cdn.net/${video.streamId}/thumbnail.jpg`}
                  alt={video.title}
                />
        
@@ -227,7 +232,7 @@ export default function ReportedVideos() {
          </div>
        
          {/* Pagination */}
-         <div className="flex justify-center mt-6 space-x-2">
+         <div className="flex justify-center  mt-6 space-x-2">
            {Array.from({ length: totalPages }, (_, i) => (
              <button
                key={i}
